@@ -1,0 +1,19 @@
+
+<div class="container mx-auto flex flex-col justify-center">
+  <h1 class="p-3 text-2xl">New Game</h1>
+  <div class="flex justify-center">
+  <%@letters.each{ |letter| %>
+    <div class="bg-blue-500 m-2 p-3 font-medium text-white">
+      <%= letter %>
+    </div>
+  <%}%>
+  </div>
+  <form action="score" method="post" data-turbo="false">
+      <p>What's the longest word you can find?</p>
+      <input class="rounded-sm border-solid border-2 py-1 w-5/6" text="text" name="word">
+      <input class="rounded-sm bg-white border-solid border-2 p-1 w-1/7 -ml-2"type="submit" value="play">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <%= hidden_field_tag :letters, @letters %>
+      <%= hidden_field_tag :start_time, @startTime %>
+  </form>
+</div>
